@@ -9,24 +9,33 @@ function doPost(e)
 {
   const body = JSON.parse(e.postData.contents);
 
-  if (!body.apiKey || body.apiKey !== apiKey) {
+  if (body.apiKey !== apiKey) {
     return ContentService.createTextOutput(JSON.stringify({
       success: false,
-      message: messages.invalidApiKey
+      message: MESSAGES.invalidApiKey
     })).setMimeType(ContentService.MimeType.JSON);
   }
 
-  let response = {};
-
-  if (isFunction(apiHandlers[body.task])) {
-    response = apiHandlers[body.task](body.data);
-
-  } else {
-    response = {
+  if (!isFunction(apiHandlers[body.task])) {
+    return ContentService.createTextOutput(JSON.stringify({
       success: false,
-      message: messages.invalidTask
-    };
+      message: MESSAGES.invalidTask
+    })).setMimeType(ContentService.MimeType.JSON);
   }
 
+  const requiredProps = [
+    'name',
+    'date',
+    'time',
+    'place'
+  ];
+  if (!isObject(body.data) || !requiredProps.every(prop => prop in body.data)) {
+    return ContentService.createTextOutput(JSON.stringify({
+      success: false,
+      message: MESSAGES.invalidData
+    })).setMimeType(ContentService.MimeType.JSON);
+  }
+
+  const response = apiHandlers[body.task](body.data);
   return ContentService.createTextOutput(JSON.stringify(response)).setMimeType(ContentService.MimeType.JSON);
 }
