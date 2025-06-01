@@ -1,0 +1,114 @@
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.gsheets-table {
+  min-width: 600px; /* enables horizontal scroll at smaller sizes */
+  border-collapse: collapse;
+}
+
+.gsheets-table th, td {
+  padding: 8px 12px;
+  white-space: nowrap; /* prevent text wrapping */
+}
+
+.gsheets-table td {
+  text-align: center;
+}
+
+.gsheets-table thead tr:first-child th {
+  text-align: left;
+}
+
+.gsheets-table thead tr:last-child th {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: #8093b3;
+}
+
+.gsheets-table thead tr:last-child th,
+.gsheets-table tbody tr:last-child td {
+  border-bottom: double black;
+}
+
+.gsheets-table tfoot tr td {
+  font-weight: bold;
+  background-color: #dfe4ec;
+}
+
+.gsheets-table thead tr:first-child th:nth-child(1) {
+  border-right: 10px solid black;
+}
+
+.gsheets-table thead tr:last-child th:nth-child(4),
+.gsheets-table td:nth-child(4) {
+  border-right: 10px solid black;
+}
+
+.gsheets-table td:nth-child(1) {
+  text-align: left;
+}
+
+.gsheets-table tbody td:nth-child(1) {
+  background-color: #f4f6f8;
+}
+
+.gsheets-table thead tr:last-child th:nth-child(1) {
+  color: inherit;
+  background-color: #dfe4ec;
+  text-align: left;
+  font-style: italic;
+}
+
+.gsheets-table thead tr:first-child th:nth-child(1) {
+  background-color: #00ff00;
+}
+
+.gsheets-table thead tr:first-child th:nth-child(2) {
+  border-right: 10px solid black;
+}
+
+.gsheets-table thead tr:last-child th:nth-child(8),
+.gsheets-table td:nth-child(8) {
+  border-right: 10px solid black;
+}
+
+.gsheets-table td:nth-child(5) {
+  text-align: left;
+}
+
+.gsheets-table tbody td:nth-child(5) {
+  background-color: #f4f6f8;
+}
+
+.gsheets-table thead tr:last-child th:nth-child(5) {
+  color: inherit;
+  background-color: #dfe4ec;
+  text-align: left;
+  font-style: italic;
+}
+
+.gsheets-table thead tr:first-child th:nth-child(2) {
+  background-color: #ffff00;
+}
+
+.gsheets-table td:nth-child(9) {
+  text-align: left;
+}
+
+.gsheets-table tbody td:nth-child(9) {
+  background-color: #f4f6f8;
+}
+
+.gsheets-table thead tr:last-child th:nth-child(9) {
+  color: inherit;
+  background-color: #dfe4ec;
+  text-align: left;
+  font-style: italic;
+}
+
+.gsheets-table thead tr:first-child th:nth-child(3) {
+  background-color: #f4cccc;
+}

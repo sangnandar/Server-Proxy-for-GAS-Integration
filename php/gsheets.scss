@@ -1,0 +1,87 @@
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.gsheets-table {
+  min-width: 600px; /* enables horizontal scroll at smaller sizes */
+  border-collapse: collapse;
+}
+
+.gsheets-table th, td {
+  padding: 8px 12px;
+  white-space: nowrap; /* prevent text wrapping */
+}
+
+.gsheets-table td {
+  text-align: center;
+}
+
+.gsheets-table thead tr:first-child th {
+  text-align: left;
+}
+
+.gsheets-table thead tr:last-child th {
+  font-weight: normal;
+  color: #ffffff;
+  background-color: #8093b3;
+}
+
+.gsheets-table thead tr:last-child th,
+.gsheets-table tbody tr:last-child td {
+  border-bottom: double black;
+}
+
+.gsheets-table tfoot tr td {
+  font-weight: bold;
+  background-color: #dfe4ec;
+}
+
+$border-color: black;
+
+$header: 3;
+$subHeader: 4;
+$headerColors: #00ff00, #ffff00, #f4cccc;
+
+@for $i from 1 through $header {
+  $col: $i * $subHeader;
+
+  @if $col < ($header * $subHeader) {
+    // Header first-row
+    .gsheets-table thead tr:first-child th:nth-child(#{$i}) {
+      border-right: 10px solid $border-color;
+    }
+
+    // header second-row and all <td>
+    .gsheets-table thead tr:last-child th:nth-child(#{$col}),
+    .gsheets-table td:nth-child(#{$col}) {
+      border-right: 10px solid $border-color;
+    }
+  }
+
+  // Exclude columns 1, 5, 9
+  .gsheets-table td:nth-child(#{4*$i - 3}) {
+    text-align: left;
+  }
+
+  // Only columns 1, 5, 9
+  .gsheets-table tbody td:nth-child(#{4*$i - 3}) {
+    background-color: #f4f6f8;
+  }
+
+  // Header second-row, only columns 1, 5, 9
+  .gsheets-table thead tr:last-child th:nth-child(#{4*$i - 3}) {
+    color: inherit;
+    background-color: #dfe4ec;
+    // width: 200px; doesn't work for width less than content
+    text-align: left;
+    font-style: italic;
+  }
+
+  // Background color for first row of <th>
+  .gsheets-table thead tr:first-child th:nth-child(#{$i}) {
+    background-color: nth($headerColors, $i);
+  }
+
+}
